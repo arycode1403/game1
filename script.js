@@ -111,4 +111,4 @@ console.log(`komputer memilih "${komp}"`)
 // test
 body.append(input)
 body.append(button)
-body.append(text)
+body.prepend(text)
