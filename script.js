@@ -1,3 +1,6 @@
+// create 19 november 2023
+// last update 20 november 2023
+
 let body = document.body
 
 /** MENDAPATKAN DATA DARI USER **/
@@ -7,7 +10,7 @@ let text = document.createElement("p")
 text.innerHTML = "<b>Batu, Gunting atau Kertas</b>"
 
 let text2 = document.createElement("p")
-text2.innerHTML = "<b>Tolong input Batu, Gunting atau Kertas saja</b>"
+text2.innerHTML = "Tolong input <b>Batu, Gunting</b> atau <b>Kertas</b> saja"
 
 // membuat element input
 let input = document.createElement("input")
@@ -27,20 +30,21 @@ let hasil = document.createElement("p")
 
 // menginput data user
 function klick(){
-  let data = input.value
-  let data2 = data.toLowerCase()
-  console.log(data2)
+  function refreshHalaman() {
+    location.href = location.href;
+  }
+  let data = input.value.toLowerCase()
   // user vs komputer
-  switch(data2){
+  switch(data){
     case "gunting":
       if(komp == "batu"){
-        hasil.innerHTML = "<b>KALAH</b> kamu ("+data2+") melawan komputer ("+komp+")."
+        hasil.innerHTML = "<b>KALAH</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
-      } else if (komp == "kestas"){
-        hasil.innerHTML = "<b>MENANG</b> kamu ("+data2+") melawan komputer ("+komp+")."
+      } else if (komp == "kertas"){
+        hasil.innerHTML = "<b>MENANG</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
       } else {
-        hasil.innerHTML = "<b>SERI</b> kamu ("+data2+") melawan komputer ("+komp+")."
+        hasil.innerHTML = "<b>SERI</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
       }
       body.append(mainLagi)
@@ -48,47 +52,39 @@ function klick(){
       break
     case "batu":
       if(komp == "kertas"){
-        hasil.innerHTML = "<b>KALAH</b> kamu ("+data2+") melawan komputer ("+komp+")."
+        hasil.innerHTML = "<b>KALAH</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
       } else if (komp == "gunting"){
-        hasil.innerHTML = "<b>MENANG</b> kamu ("+data2+") melawan komputer ("+komp+")."
+        hasil.innerHTML = "<b>MENANG</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
       } else {
-        hasil.innerHTML = "<b>SERI</b> kamu ("+data2+") melawan komputer ("+komp+")."
+        hasil.innerHTML = "<b>SERI</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
       }
       body.append(mainLagi)
       mainLagi.onclick = refreshHalaman
-        break
+      break
     case "kertas":
       if(komp == "batu"){
-        hasil.innerHTML = "<b>MENANG</b> kamu ("+data2+") melawan komputer ("+komp+")."
+        hasil.innerHTML = "<b>MENANG</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
       } else if (komp == "gunting"){
-        hasil.innerHTML = "<b>KALAH</b> kamu ("+data2+") melawan komputer ("+komp+")."
+        hasil.innerHTML = "<b>KALAH</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
       } else {
-        hasil.innerHTML = "<b>SERI</b> kamu ("+data2+") melawan komputer ("+komp+")."
+        hasil.innerHTML = "<b>SERI</b> kamu (<b>"+data+"</b>) melawan komputer (<b>"+komp+"</b>)."
         body.append(hasil)
       }
       body.append(mainLagi)
       mainLagi.onclick = refreshHalaman
       break
     default:
-      function refreshHalaman2() {
-    location.href = location.href;
-      }
       body.append(text2)
       body.append(ok)
       hasil.remove()
-      ok.onclick = refreshHalaman2
-      break
-      
+      ok.onclick = refreshHalaman
   }
-  function refreshHalaman() {
-    location.href = location.href;
-  }
-}
+ }
 
 
 button.onclick = klick
